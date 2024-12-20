@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-microservices-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: flask-microservices
+  ports:
+    - protocol: TCP
+      port: 5000        # Port exposed externally
+      targetPort: 5000  # Port inside the container

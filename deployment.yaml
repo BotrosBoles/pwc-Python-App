@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-microservices
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask-microservices
+  template:
+    metadata:
+      labels:
+        app: flask-microservices
+    spec:
+      containers:
+        - name: flask-microservices-container
+          image: botros1/pwc-flaskapp:v1
+          ports:
+            - containerPort: 5000
