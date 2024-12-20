@@ -5,7 +5,9 @@ on:
     workflows: ["Continuous Integration"]
     types:
       - completed
-
+permissions:
+  id-token: write
+  contents: read
 jobs:
   deploy:
     runs-on: ubuntu-latest
