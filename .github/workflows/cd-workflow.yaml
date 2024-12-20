@@ -44,6 +44,6 @@ jobs:
         with:
           manifests: |
             pwc-Python-App/deployment.yaml
-            pwc-Python-App/deployment.yaml
+            pwc-Python-App/service.yaml
           images: |
             botros1/pwc-flaskapp:latest
