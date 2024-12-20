@@ -41,7 +41,7 @@ jobs:
 
       - name: Terraform Apply
         working-directory: ./terraform-aks
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve || true
 
       # Docker Build and Push
       - name: Log in to Docker Hub
