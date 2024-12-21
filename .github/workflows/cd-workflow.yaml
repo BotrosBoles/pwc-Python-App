@@ -26,6 +26,12 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           enable-AzPSSession: true
 
+      - name: Set AKS context
+        uses: azure/aks-set-context@v1
+        with:
+          resource-group: flaskapp-resource-group
+          cluster-name: flaskapp-aks-cluster
+
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -37,7 +43,7 @@ jobs:
         uses: azure/k8s-deploy@v1
         with:
           manifests: |
-            pwc-Python-App/deployment.yaml
-            pwc-Python-App/service.yaml
+            ./deployment.yaml
+            ./service.yaml
           images: |
             botros1/pwc-flaskapp:latest
