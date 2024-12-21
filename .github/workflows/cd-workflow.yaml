@@ -20,14 +20,23 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          enable-AzPSSession: true
 
       - name: Set AKS context
-        uses: azure/aks-set-context@v1
+        id: set-context
+        uses: azure/aks-set-context@v3
         with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           resource-group: flaskapp-resource-group
           cluster-name: flaskapp-aks-cluster
 
+      - name: Setup kubectl
+        id: install-kubectl
+        uses: azure/setup-kubectl@v3
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
