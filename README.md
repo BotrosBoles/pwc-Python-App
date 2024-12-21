@@ -193,11 +193,11 @@ Then Browse :
  7. Delete resources: cd terraform-aks
     
 
-     kubectl delete -f deployment.yaml
+             kubectl delete -f deployment.yaml
     
-     kubectl delete -f service.yaml
+             kubectl delete -f service.yaml
     
-     terraform destroy -auto-approve
+             terraform destroy -auto-approve
 
     
 
